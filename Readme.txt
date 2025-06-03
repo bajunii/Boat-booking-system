@@ -18,13 +18,13 @@ How to run the Boat Booking System using PHP and MySQL
 
 Username: admin
 
-Password: Test@123
+Password: haitham98
 
 *************************Sub-Admin Login Details**********************************
 
-Username: akr305
+Username: bajunii
 
-Password: Test@123
+Password: haitham98
 
 Or Register a new sub-admin from admin panel.
 

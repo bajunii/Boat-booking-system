@@ -49,7 +49,7 @@ include('includes/config.php');
         <div class="container">
           <div class="row align-items-center">
             <div class="col-lg-7 ml-auto text-right" data-aos="fade-up">
-              <h1>Explore, Discover The Rivers</h1>
+              <h1>Explore, Discover The Indian Ocean</h1>
           
               
             </div>
