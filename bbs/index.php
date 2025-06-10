@@ -49,7 +49,7 @@ include('includes/config.php');
         <div class="container">
           <div class="row align-items-center">
             <div class="col-lg-7 ml-auto text-right" data-aos="fade-up">
-              <h1>Explore, Discover The Indian Ocean</h1>
+                <h1>Explore, Discover The Indian Ocean</h1>
           
               
             </div>
@@ -105,7 +105,7 @@ include('includes/config.php');
               <span class="wrap-icon-39293">
                 <span class="flaticon-shield"></span>
               </span>
-              <h3>30 Years of Experience</h3>
+              <h3>5 Years of Experience</h3>
             </div>
           </div>
           <div class="col-md-6 col-lg-4">
@@ -125,26 +125,26 @@ include('includes/config.php');
         <div class="row">
           <div class="col">
             <div class="counter-39392">
-              <h3>200+</h3>
+              <h3>50+</h3>
               <span>Number of Boat</span>
             </div>
           </div>
           <div class="col">
             <div class="counter-39392">
-              <h3>7000+</h3>
+              <h3>700+</h3>
               <span>Customers Satisfied</span>
             </div>
           </div>
           <div class="col">
             <div class="counter-39392">
-              <h3>120</h3>
+              <h3>20</h3>
               <span>Number of Staffs</span>
             </div>
           </div>
         
           <div class="col">
             <div class="counter-39392">
-              <h3>230</h3>
+              <h3>30</h3>
               <span>Professional Sailors</span>
             </div>
           </div>
@@ -173,7 +173,7 @@ while($result=mysqli_fetch_array($query)){
                 <div class="d-flex">
           
                   <div class="ml-auto price">
-                    <span class="bg-primary">Kshs<?php echo $result['Price']?></span>
+                    <span class="bg-primary">Kshs <?php echo $result['Price']?></span>
                   </div>
                   
                 </div>

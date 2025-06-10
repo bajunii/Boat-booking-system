@@ -102,7 +102,7 @@ $query = mysqli_query($con, "SELECT * FROM tblboat LIMIT $limit OFFSET $offset")
                  Book</a>
                 </div>
                 <div class="ml-auto price">
-                  <span class="bg-primary">$<?php echo $result['Price']; ?></span>
+                  <span class="bg-primary">Kshs <?php echo $result['Price']; ?></span>
                 </div>
               </div>
             </div>
