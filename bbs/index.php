@@ -81,7 +81,7 @@ include('includes/config.php');
           <div class="col-md-6">
             <span class="text-serif text-primary">About Us</span>
             <h3 class="heading-92913 text-black">Welcome To Our Website</h3>
-            <p>Boat Booking System developed using PHP and MySQL</p>
+            <p>Boat Booking System within the Coast Region</p>
             
           
           </div>
@@ -191,7 +191,7 @@ while($result=mysqli_fetch_array($query)){
 
 
 
-    <div class="site-section bg-image overlay" style="background-image: url('images/hero_2.jpg');">
+    <div class="site-section bg-image overlay" style="background-image: url('images/boat_1.jpeg');">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-7 text-center">

@@ -12,7 +12,7 @@ How to run the Boat Booking System using PHP and MySQL
 
 6. Import bbsdb.sql file(given inside the zip package in SQL file folder)
 
-7. Run the script http://localhost/bbs
+7. Run the script (http://localhost:3000/bbs/)
 
 *************************Admin Login Details**********************************
 
