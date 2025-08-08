@@ -30,7 +30,15 @@ include('includes/config.php');
 
   <link rel="stylesheet" href="css/style.css">
 
-
+<style>
+    body {
+      background-color: #eff5faff; /* Change this to your desired color */
+    }
+    
+    .site-wrap {
+      background-color: transparent;
+    }
+  </style>
 
 </head>
 

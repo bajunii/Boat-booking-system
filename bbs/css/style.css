@@ -4,13 +4,13 @@ html {
 
 body {
   line-height: 1.7;
-  color: gray;
+  color: rgb(202, 122, 122);
   font-weight: 300;
   font-size: 1.1rem; }
 
 ::-moz-selection {
   background: #000;
-  color: #fff; }
+  color: #5c3030; }
 
 ::selection {
   background: #000;
@@ -93,7 +93,7 @@ h1, h2, h3, h4, h5,
       font-size: 3rem; } }
 
 .border-top {
-  border-top: 1px solid #edf0f5 !important; }
+  border-top: 1px solid #3d4758 !important; }
 
 .site-footer {
   padding: 4em 0; }
