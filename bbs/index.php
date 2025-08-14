@@ -29,12 +29,10 @@ include('includes/config.php');
   <link href="css/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
 
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/custom-enhancements.css">
+  <link rel="stylesheet" href="css/responsive-fixes.css">
 
 <style>
-    body {
-      background-color: #eff5faff; /* Change this to your desired color */
-    }
-    
     .site-wrap {
       background-color: transparent;
     }
@@ -172,18 +170,41 @@ include('includes/config.php');
          <?php $query=mysqli_query($con,"select * from tblboat limit 6");
 $cnt=1;
 while($result=mysqli_fetch_array($query)){
+  // Get average rating for this boat
+  $boat_id = $result['ID'];
+  $rating_query = mysqli_query($con, "SELECT AVG(Rating) as avg_rating, COUNT(*) as review_count FROM tblreviews WHERE BoatID='$boat_id' AND IsApproved=1");
+  $rating_data = mysqli_fetch_array($rating_query);
+  $avg_rating = round($rating_data['avg_rating'], 1);
+  $review_count = $rating_data['review_count'];
 ?>
           <div class="col-md-6 col-lg-4 mb-4">
             <div class="service-39381">
               <img src="admin/images/<?php echo $result['Image'];?>" alt="Image"  width="350" height="200">
               <div class="p-4">
                 <h3><a href="boat-details.php?bid=<?php echo $result['ID']; ?>"><span class="icon-room mr-1 text-primary"></span> <?php echo $result['Source']?> &mdash; <?php echo $result['Destination']?></a></h3>
+                
+                <!-- Rating Display -->
+                <?php if($avg_rating > 0): ?>
+                <div class="mb-2">
+                  <span class="text-warning">
+                    <?php 
+                    for($i = 1; $i <= 5; $i++) {
+                      if($i <= $avg_rating) {
+                        echo '★';
+                      } else {
+                        echo '☆';
+                      }
+                    }
+                    ?>
+                  </span>
+                  <small class="text-muted"><?php echo $avg_rating; ?> (<?php echo $review_count; ?> reviews)</small>
+                </div>
+                <?php endif; ?>
+                
                 <div class="d-flex">
-          
                   <div class="ml-auto price">
                     <span class="bg-primary">Kshs <?php echo $result['Price']?></span>
                   </div>
-                  
                 </div>
               </div>
             </div>

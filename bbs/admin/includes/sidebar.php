@@ -150,6 +150,26 @@
             </a>
           </li>
 
+<!--Analytics--->
+      <li class="nav-item">
+            <a href="analytics-dashboard.php" class="nav-link">
+                 <i class="nav-icon fas fa-chart-bar"></i>
+              <p>
+             Analytics Dashboard
+              </p>
+            </a>
+          </li>
+
+<!--Reviews--->
+      <li class="nav-item">
+            <a href="manage-reviews.php" class="nav-link">
+                 <i class="nav-icon fas fa-star"></i>
+              <p>
+             Manage Reviews
+              </p>
+            </a>
+          </li>
+
 
 
 

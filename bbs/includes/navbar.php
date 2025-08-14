@@ -38,7 +38,7 @@
                 <span class="icon-envelope text-primary"></span>
               </div>
               <div class="text">
-                <span class="h4 d-block">haithamomar@gmail.com</span>
+                <span class="h4 d-block">haithamomar520@gmail.com</span>
                
               </div>
             </div>
@@ -79,7 +79,7 @@
                     <a href="contact.php" class="nav-link text-left">Contact</a>
                   </li>
                  
-                  <li><a href="admin/index.php" class="nav-link text-left">Admin</a></li>
+                  <li><a href="admin/index.php" class="nav-link text-left" target="_blank">Admin</a></li>
               </ul>                                                                                                                                                                                                                                                                                          </ul>
             </nav>
 

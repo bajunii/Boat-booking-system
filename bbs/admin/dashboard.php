@@ -179,6 +179,66 @@ $rejectedbookings=mysqli_num_rows($query12);
           </div>
           <!-- ./col -->
           
+          <!-- Revenue Box -->
+          <div class="col-lg-4 col-6">
+            <div class="small-box bg-info">
+              <div class="inner">
+                <?php 
+                $revenue_query = mysqli_query($con, "SELECT SUM(b.Price * bk.NumnerofPeople) as total_revenue 
+                                                    FROM tblbookings bk 
+                                                    JOIN tblboat b ON bk.BoatID = b.ID 
+                                                    WHERE bk.BookingStatus = 'Accepted'");
+                $revenue_data = mysqli_fetch_array($revenue_query);
+                $total_revenue = $revenue_data['total_revenue'] ?? 0;
+                ?>
+                <h3>Kshs <?php echo number_format($total_revenue); ?></h3>
+                <p>Total Revenue</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-cash"></i>
+              </div>
+              <a href="analytics-dashboard.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Reviews Box -->
+          <div class="col-lg-4 col-6">
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <?php 
+                $reviews_query = mysqli_query($con, "SELECT COUNT(*) as review_count FROM tblreviews WHERE IsApproved = 0");
+                $reviews_data = mysqli_fetch_array($reviews_query);
+                $pending_reviews = $reviews_data['review_count'];
+                ?>
+                <h3><?php echo $pending_reviews; ?></h3>
+                <p>Pending Reviews</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-star"></i>
+              </div>
+              <a href="manage-reviews.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Average Rating Box -->
+          <div class="col-lg-4 col-6">
+            <div class="small-box bg-success">
+              <div class="inner">
+                <?php 
+                $avg_rating_query = mysqli_query($con, "SELECT AVG(Rating) as avg_rating FROM tblreviews WHERE IsApproved = 1");
+                $avg_rating_data = mysqli_fetch_array($avg_rating_query);
+                $avg_rating = round($avg_rating_data['avg_rating'], 1);
+                ?>
+                <h3><?php echo $avg_rating ?? 'N/A'; ?> ⭐</h3>
+                <p>Average Rating</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-thumbsup"></i>
+              </div>
+              <a href="analytics-dashboard.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          
 
 
 

@@ -1,0 +1,197 @@
+/* CSS Reset and Global Improvements */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Ensure all images are responsive by default */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus states for accessibility */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+a:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Loading states */
+.btn.loading {
+  position: relative;
+  color: transparent !important;
+}
+
+.btn.loading::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  margin-left: -8px;
+  margin-top: -8px;
+  border: 2px solid transparent;
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: button-loading-spinner 1s ease infinite;
+}
+
+@keyframes button-loading-spinner {
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* Utility classes */
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shadow-sm {
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important;
+}
+
+.shadow {
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+}
+
+.shadow-lg {
+  box-shadow: 0 1rem 3rem rgba(0,0,0,.175) !important;
+}
+
+/* Enhanced hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Improved spacing */
+.section-padding {
+  padding: 3rem 0;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 5rem 0;
+  }
+}
+
+/* Typography improvements */
+.display-1, .display-2, .display-3, .display-4 {
+  font-weight: 600;
+}
+
+.lead {
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: #6c757d;
+}
+
+/* Better contrast for accessibility */
+.text-muted {
+  color: #6c757d !important;
+}
+
+.text-primary {
+  color: #007bff !important;
+}
+
+.text-success {
+  color: #28a745 !important;
+}
+
+.text-warning {
+  color: #ffc107 !important;
+}
+
+.text-danger {
+  color: #dc3545 !important;
+}
+
+/* Responsive breakpoints for images */
+@media (max-width: 576px) {
+  .service-39381 img {
+    height: 150px;
+    object-fit: cover;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .service-39381 img {
+    height: 180px;
+    object-fit: cover;
+  }
+}
+
+@media (min-width: 769px) {
+  .service-39381 img {
+    height: 200px;
+    object-fit: cover;
+  }
+}
+
+/* Enhanced navigation */
+.navbar {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* Footer improvements */
+.site-footer {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  color: #fff;
+  position: relative;
+}
+
+.site-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #fff, transparent);
+}
+
+/* Print optimizations */
+@media print {
+  .no-print,
+  .btn,
+  .navbar,
+  .sidebar,
+  .footer {
+    display: none !important;
+  }
+  
+  .container {
+    width: 100% !important;
+    max-width: none !important;
+  }
+  
+  .card {
+    border: 1px solid #000 !important;
+    box-shadow: none !important;
+  }
+}

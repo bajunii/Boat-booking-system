@@ -4,9 +4,11 @@ html {
 
 body {
   line-height: 1.7;
-  color: rgb(202, 122, 122);
+  color: #333333;
   font-weight: 300;
-  font-size: 1.1rem; }
+  font-size: 1.1rem;
+  background-color: #f8f9fa;
+}
 
 ::-moz-selection {
   background: #000;

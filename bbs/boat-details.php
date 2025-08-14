@@ -14,6 +14,7 @@ error_reporting(0);
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link href="https://fonts.googleapis.com/css?family=Oswald:400,700|Dancing+Script:400,700|Muli:300,400" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="fonts/icomoon/style.css">
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -32,8 +33,31 @@ error_reporting(0);
   <link href="css/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
 
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/custom-enhancements.css">
 
-
+  <style>
+    .star-rating {
+      color: #ffc107;
+      font-size: 18px;
+    }
+    .star-rating .empty {
+      color: #e0e0e0;
+    }
+    .review-card {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 15px;
+      background: #f9f9f9;
+    }
+    .rating-summary {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+  </style>
 
 </head>
 
@@ -87,12 +111,118 @@ while($result=mysqli_fetch_array($query)){
               
                 <a href="book-boat.php?bid=<?php echo $result['ID']; ?>"  class="btn btn-primary py-3 px-5">
                  Book Now</a>
+                 
+                <a href="leave-review.php?bid=<?php echo $result['ID']; ?>"  class="btn btn-success py-3 px-5 ml-2">
+                 Leave Review</a>
               </div>
 
             
           </div>
         </div>
       </div><?php } ?>
+      
+      <!-- Reviews Section -->
+      <div class="row mt-5">
+        <div class="col-md-12">
+          <h3>Customer Reviews & Ratings</h3>
+          
+          <?php
+          // Get average rating and review count
+          $bid = $_GET['bid'];
+          $rating_query = mysqli_query($con, "SELECT AVG(Rating) as avg_rating, COUNT(*) as review_count FROM tblreviews WHERE BoatID='$bid' AND IsApproved=1");
+          $rating_data = mysqli_fetch_array($rating_query);
+          $avg_rating = round($rating_data['avg_rating'], 1);
+          $review_count = $rating_data['review_count'];
+          ?>
+          
+          <!-- Rating Summary -->
+          <div class="rating-summary">
+            <div class="row">
+              <div class="col-md-3 text-center">
+                <h2 class="mb-0"><?php echo $avg_rating > 0 ? $avg_rating : 'No ratings'; ?></h2>
+                <div class="star-rating mb-2">
+                  <?php 
+                  for($i = 1; $i <= 5; $i++) {
+                    if($i <= $avg_rating) {
+                      echo '<i class="fas fa-star"></i>';
+                    } else {
+                      echo '<i class="fas fa-star empty"></i>';
+                    }
+                  }
+                  ?>
+                </div>
+                <small class="text-muted"><?php echo $review_count; ?> reviews</small>
+              </div>
+              <div class="col-md-9">
+                <?php
+                // Get rating distribution
+                for($star = 5; $star >= 1; $star--) {
+                  $star_query = mysqli_query($con, "SELECT COUNT(*) as count FROM tblreviews WHERE BoatID='$bid' AND Rating='$star' AND IsApproved=1");
+                  $star_data = mysqli_fetch_array($star_query);
+                  $star_count = $star_data['count'];
+                  $percentage = $review_count > 0 ? ($star_count / $review_count) * 100 : 0;
+                ?>
+                <div class="d-flex align-items-center mb-2">
+                  <span class="mr-2"><?php echo $star; ?> star</span>
+                  <div class="progress flex-fill mr-2" style="height: 8px;">
+                    <div class="progress-bar bg-warning" style="width: <?php echo $percentage; ?>%"></div>
+                  </div>
+                  <span class="text-muted"><?php echo $star_count; ?></span>
+                </div>
+                <?php } ?>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Individual Reviews -->
+          <?php
+          $reviews_query = mysqli_query($con, "SELECT * FROM tblreviews WHERE BoatID='$bid' AND IsApproved=1 ORDER BY ReviewDate DESC LIMIT 10");
+          
+          if(mysqli_num_rows($reviews_query) > 0) {
+            while($review = mysqli_fetch_array($reviews_query)) {
+          ?>
+          <div class="review-card">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <div>
+                <h5 class="mb-1"><?php echo htmlspecialchars($review['CustomerName']); ?></h5>
+                <div class="star-rating">
+                  <?php 
+                  for($i = 1; $i <= 5; $i++) {
+                    if($i <= $review['Rating']) {
+                      echo '<i class="fas fa-star"></i>';
+                    } else {
+                      echo '<i class="fas fa-star empty"></i>';
+                    }
+                  }
+                  ?>
+                </div>
+              </div>
+              <small class="text-muted"><?php echo date('M d, Y', strtotime($review['ReviewDate'])); ?></small>
+            </div>
+            
+            <?php if($review['ReviewTitle']): ?>
+            <h6 class="mb-2"><?php echo htmlspecialchars($review['ReviewTitle']); ?></h6>
+            <?php endif; ?>
+            
+            <?php if($review['ReviewText']): ?>
+            <p class="mb-2"><?php echo htmlspecialchars($review['ReviewText']); ?></p>
+            <?php endif; ?>
+            
+            <?php if($review['AdminResponse']): ?>
+            <div class="mt-3 p-3 bg-light rounded">
+              <strong>Response from Management:</strong>
+              <p class="mb-0 mt-1"><?php echo htmlspecialchars($review['AdminResponse']); ?></p>
+            </div>
+            <?php endif; ?>
+          </div>
+          <?php 
+            }
+          } else {
+            echo '<div class="alert alert-info">No reviews yet. Be the first to review this boat!</div>';
+          }
+          ?>
+        </div>
+      </div>
     </div>
     
 
