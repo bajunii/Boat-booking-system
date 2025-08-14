@@ -242,7 +242,7 @@ h1, h2, h3, h4, h5,
 
 /* Navbar */
 .site-logo {
-  font-size: 2rem;
+  font-size: .5rem;
   text-transform: uppercase; }
   .site-logo strong {
     font-weight: 900; }
@@ -256,7 +256,7 @@ h1, h2, h3, h4, h5,
     padding-left: 7rem;
     padding-right: 7rem; }
   .site-navbar .site-navigation.border-bottom {
-    border-bottom: 1px solid #f3f3f4 !important; }
+    border-bottom: 0.2px solid #f3f3f4 !important; }
   .site-navbar .site-navigation .site-menu {
     margin-bottom: 0; }
     .site-navbar .site-navigation .site-menu .active > a {
@@ -269,7 +269,7 @@ h1, h2, h3, h4, h5,
       .site-navbar .site-navigation .site-menu .active > a:before {
         width: 100%;
         content: "";
-        height: 2px;
+        height: 0.5px;
         left: 0;
         bottom: 0;
         background-color: #fff; }

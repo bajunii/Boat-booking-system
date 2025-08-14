@@ -1,5 +1,35 @@
 /* Enhanced styles for Boat Booking System */
 
+/* Compact Navbar/Header Styles */
+.header-top > .container {
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+}
+
+.header-top .col-6.col-lg-3 img {
+  max-height: 40px !important;
+  width: auto !important;
+}
+
+.header-top .col-6.col-lg-3 h3 {
+  font-size: 1.2rem !important;
+  margin-top: 5px !important;
+  margin-bottom: 0 !important;
+}
+
+.header-top .quick-contact-icons .text .h4 {
+  font-size: 1rem !important;
+}
+
+.header-top .quick-contact-icons .icon {
+  width: 35px !important;
+  height: 35px !important;
+}
+
+.header-top .quick-contact-icons .icon span {
+  font-size: 16px !important;
+}
+
 /* Global improvements */
 body {
   line-height: 1.7;
